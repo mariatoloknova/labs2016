@@ -4,18 +4,17 @@ from pyrob.api import *
 
 
 @task(delay=0.05)
-def task_4_3():
+def task_4_11():
     move_right()
-    for i in range(6):
-        while(wall_is_on_the_right() != True):
+    move_down()
+    fill_cell()
+    for i in range(13):
+        for j in range(i):
             fill_cell()
             move_right()
-        move_left()
-        move_down()
-        while (wall_is_on_the_left() != True):
-            fill_cell()
+        fill_cell()
+        for j in range(i):
             move_left()
-        move_right()
         move_down()
 
 
