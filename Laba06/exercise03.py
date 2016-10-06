@@ -15,15 +15,16 @@ def get_percentile_number(value, percentiles):
             break
     return i - 1
 
-def value_equalization(value, percentiles, step = 1, add_random=False):
+def value_equalization(value, percentiles, add_random=False):
+    step = 1/len(percentiles)
     idx = get_percentile_number(value, percentiles)
     if add_random:
         return idx * step + random.uniform(0, step)
     else:
         return idx * step
 
-def values_equalization(values, percentiles, step = 1, add_random=False):
-    return [value_equalization(value, percentiles, step = step, add_random = add_random) for value in values]
+def values_equalization(values, percentiles, add_random=False):
+    return [value_equalization(value, percentiles, add_random = add_random) for value in values]
 
 random.seed(0)
 #Считываем данные в массив numpy
@@ -46,7 +47,7 @@ plt.subplot(324)
 plt.hist(data.flatten())
 #Эквализируем данные
 for i in range(len(data)):
-    percentiles = get_percentile(data[i], 100)
+    percentiles = get_percentile(data[i], 4)
     if min(data[i]) > 0: #Ставим в начало 0, если все числа положительные
         percentiles[0] = 0.0
     data[i] = values_equalization(data[i], percentiles, add_random = True)
