@@ -27,4 +27,7 @@ while N not in rooms and len(checked_rooms) != len(data):
             query.append(room)
     current_room = query.pop(0)
     checked_rooms.add(current_room)
-print(rooms)
+if N in rooms:
+    print(rooms[N])
+else:
+    print("None")
