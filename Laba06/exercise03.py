@@ -13,7 +13,10 @@ def get_percentile_number(value, percentiles):
         i += 1
         if i == len(percentiles):
             break
-    return i - 1
+    if i > 0:
+        return i - 1
+    else:
+        return i
 
 def value_equalization(value, percentiles, add_random=False):
     step = 1/len(percentiles)
@@ -46,13 +49,18 @@ plt.imshow(data, cmap = plt.get_cmap('gray'))
 plt.subplot(324)
 plt.hist(data.flatten())
 #Эквализируем данные
+# for i in range(len(data)):
+#     percentiles = get_percentile(data[i], 4)
+#     if min(data[i]) > 0: #Ставим в начало 0, если все числа положительные
+#         percentiles[0] = 0.0
+#     data[i] = values_equalization(data[i], percentiles[1:], add_random = True)
+percentiles = get_percentile(data.ravel(), 4)
+percentiles[0] = 0.0
 for i in range(len(data)):
-    percentiles = get_percentile(data[i], 4)
-    if min(data[i]) > 0: #Ставим в начало 0, если все числа положительные
-        percentiles[0] = 0.0
-    data[i] = values_equalization(data[i], percentiles, add_random = True)
+    data[i] = values_equalization(data[i], percentiles, add_random=True)
+print(data)
 plt.subplot(325)
-plt.imshow(data, cmap = plt.get_cmap('gray'))
+plt.imshow(data[130:140, 110:120], cmap = plt.get_cmap('gray'))
 plt.subplot(326)
 plt.hist(data.flatten()) #По гистограмме у меня вроде всё норм
 plt.show()
