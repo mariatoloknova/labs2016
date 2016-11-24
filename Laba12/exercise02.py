@@ -66,7 +66,6 @@ class Dolphin(Animal):
         return "Dolphin-{} {}. It is {} years old".format(self.species, self.name, self.get_age())
 
 
-print("\n<========= TASK 1 ===========>\n")
 print("Input the height and the width of triangle:", end=" ")
 a, b = list(map(int, input().split()))
 triangle = Triangle(a, b)
@@ -76,19 +75,16 @@ rectangle = Rectangle(a, b)
 print("The square of triangle is ", triangle.area())
 print("The square of rectangle is ", rectangle.area(), end="\n\n\n")
 
-print("\n<========= TASK 2 ===========>\n")
-mother = Mother(45, "Lusy", "like to lick the lid of yogurt")
-daughter = Daughter(15, "Kate", "like to smoke", 10)
+
+mother = Mother(45, "Olga", "like cats")
+daughter = Daughter(15, "Kate", "like dogs", 10)
 print("Mother:")
 print(mother)
-print("-----------------------------")
 print("Daughter:")
-print(daughter, end="\n\n\n")
+print(daughter)
 
-print("\n<========= TASK 3 ===========>\n")
-zebra = Zebra("Marty", 4, 237)
-dolphin = Dolphin("Yasha", 6, "Grampus")
-print("Welcome to the zoo. Look here")
+
+zebra = Zebra("Andrey", 4, 400)
+dolphin = Dolphin("Igor", 2, "Grampus")
 print(zebra)
-print("Now look there")
 print(dolphin)
